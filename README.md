@@ -1,11 +1,13 @@
 # How to compile manually:
 
-`javac -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" -d . Send.java Recv.java`
+`javac -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" -d . HelloWorld/Send.java HelloWorld/Recv.java`
 
-# How to run the Producer:
+# Hello World
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.Send`
+## How to run the Producer:
 
-# How to run the Consumer:
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.HelloWorld.Send`
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.Recv`
+## How to run the Consumer:
+
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.HelloWorld.Recv`
