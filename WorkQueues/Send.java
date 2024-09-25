@@ -18,9 +18,20 @@ public class Send {
         ) {
             channel.queueDeclare(QUEUE_NAME, false, false, false, null);
             while (true) {
-                String message = System.console().readLine();
-                channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
-                System.out.println(" [x] Sent '" + message + "'");
+                try {
+                    String message = System.console().readLine();
+
+                    if (message.isEmpty()) {
+                        System.out.println("Empty message received. Exiting...");
+                        break;
+                    }
+
+                    channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
+                    System.out.println(" [x] Sent '" + message + "'");
+                } catch (Exception e) {
+                    System.out.println("Interrupted by user. Exiting...");
+                    break;
+                }
             }
         }
     }

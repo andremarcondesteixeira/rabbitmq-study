@@ -35,6 +35,21 @@ public class Worker {
 
         var autoAck = false;
         channel.basicConsume(QUEUE_NAME, autoAck, deliverCallback, consumerTag -> { });
+
+        // Add shutdown hook to close connection and channel gracefully
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Shutting down gracefully...");
+            try {
+                if (channel.isOpen()) {
+                    channel.close();
+                }
+                if (connection.isOpen()) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
     }
 
     private static void doWork(String task) throws InterruptedException {
