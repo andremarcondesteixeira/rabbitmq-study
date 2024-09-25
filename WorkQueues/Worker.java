@@ -15,8 +15,8 @@ public class Worker {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.basicQos(1);
 
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
@@ -28,11 +28,13 @@ public class Worker {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } finally {
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
                 System.out.println(" [x] Done");
             }
         };
 
-        channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> { });
+        var autoAck = false;
+        channel.basicConsume(QUEUE_NAME, autoAck, deliverCallback, consumerTag -> { });
     }
 
     private static void doWork(String task) throws InterruptedException {
