@@ -3,6 +3,7 @@ package com.myapp.WorkQueues;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 import java.nio.charset.StandardCharsets;
 
@@ -16,7 +17,8 @@ public class Send {
                 Connection connection = factory.newConnection();
                 Channel channel = connection.createChannel()
         ) {
-            channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+            var durable = true;
+            channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
             while (true) {
                 try {
                     String message = System.console().readLine();
@@ -26,7 +28,7 @@ public class Send {
                         break;
                     }
 
-                    channel.basicPublish("", QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
+                    channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
                     System.out.println(" [x] Sent '" + message + "'");
                 } catch (Exception e) {
                     System.out.println("Interrupted by user. Exiting...");

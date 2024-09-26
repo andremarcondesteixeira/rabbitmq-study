@@ -15,7 +15,8 @@ public class Worker {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        var durable = true;
+        channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
         channel.basicQos(1);
 
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
