@@ -13,19 +13,19 @@ The port 15672 refers to the management plugin, which can be accessed through th
 
 ## How to run the Producer:
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.HelloWorld.Send`
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.HelloWorld.Send`
 
 ## How to run the Consumer:
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.HelloWorld.Recv`
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.HelloWorld.Recv`
 
 # Work Queues
 
 ## How to run the Producer:
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.WorkQueues.Send`
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.Send`
 
 ## How to run the Worker:
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.WorkQueues.Worker`
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.WorkQueues.WorkerWithoutShutdownHook`
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.Worker`
+`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.WorkerWithoutShutdownHook`
