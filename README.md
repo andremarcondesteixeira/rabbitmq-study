@@ -1,9 +1,9 @@
-# How to run RabbitMQ (for this exercise specifically)
+# How to run RabbitMQ
 
 The port 15672 refers to the management plugin, which can be accessed through the browser to manage RabbitMQ
 
-`docker build -t my-rabbit:1 .`
-`docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672 my-rabbit:1`
+1. `docker build -t my-rabbit:1 .`
+2. `docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672 my-rabbit:1`
 
 # How to compile manually:
 
