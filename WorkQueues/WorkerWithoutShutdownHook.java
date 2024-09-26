@@ -20,7 +20,9 @@ public class WorkerWithoutShutdownHook {
         ) {
             var durable = true;
             channel.queueDeclare(QUEUE_NAME, durable, false, false, null);
-            channel.basicQos(1);
+
+            var maxQueueSize = 1;
+            channel.basicQos(maxQueueSize);
 
             System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
