@@ -7,25 +7,18 @@ The port 15672 refers to the management plugin, which can be accessed through th
 
 # How to compile manually:
 
-`javac -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" -d . HelloWorld/Send.java HelloWorld/Recv.java WorkQueues/Send.java WorkQueues/Worker.java WorkQueues/WorkerWithoutShutdownHook.java`
+The following command will put the class files in the "out" folder
 
-# Hello World
+`javac -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" -d out ./com/myapp/CompileMeToCompileEverything.java`
 
-## How to run the Producer:
+# How to run manually:
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.HelloWorld.Send`
+Put the jars and the output folder in the classpath and run the class using `java`
 
-## How to run the Consumer:
+`java -classpath "out;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.HelloWorld.Send`
 
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.HelloWorld.Recv`
+# Scripted compile and run (NuShell required)
 
-# Work Queues
+Use "run.nu" passing the classname as argument:
 
-## How to run the Producer:
-
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.Send`
-
-## How to run the Worker:
-
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.Worker`
-`java -classpath ".;amqp-client-5.16.0.jar;slf4j-simple-1.7.36.jar;slf4j-api-1.7.36.jar" com.myapp.com.myapp.WorkQueues.WorkerWithoutShutdownHook`
+`nu ./run.nu com.myapp.WorkQueues.Worker`
